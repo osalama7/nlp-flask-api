@@ -18,6 +18,7 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = './tmp'
 ALLOWED_EXTENSIONS = {'csv', 'tsv'}
 
+
 app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -304,6 +305,10 @@ def test_logistic_regression(test_x, test_y, freqs, theta, predict_tweet=predict
 
 gql_api_url = app.config.get('GQL_API_URL', 'http://localhost:4001/')
 
+@app.route('/', methods=['GET'])
+def home():
+    return '''<h1>Hello World</h1>'''
+
 @app.route("/api/python")
 def hello_world():
     return "<p>Lets do some sentiment analysis! woowie something may have gone wrong</p>"
@@ -508,4 +513,5 @@ def predict_tweet():
         except requests.exceptions.RequestException as e:
             return str(e), 500  # Return an error message and 500 status code
 
-    
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5328)
