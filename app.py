@@ -20,7 +20,6 @@ ALLOWED_EXTENSIONS = {'csv', 'tsv'}
 
 
 app = Flask(__name__)
-app.config['APPLICATION_ROOT'] = '/api'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 upload_folder_path = app.config['UPLOAD_FOLDER']
 
